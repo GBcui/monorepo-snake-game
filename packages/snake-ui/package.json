@@ -1,0 +1,27 @@
+{
+  "name": "@snake/ui",
+  "version": "1.0.0",
+  "description": "贪吃蛇游戏 UI 组件",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --declaration",
+    "type-check": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist || true",
+    "lint": "echo 'No lint for ui'",
+    "format": "echo 'No format for ui'"
+  },
+  "dependencies": {
+    "@snake/core": "workspace:*",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "typescript": "^5.6.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@snake/core",
+  "version": "1.0.0",
+  "description": "贪吃蛇游戏核心逻辑和类型定义",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --declaration",
+    "type-check": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist || true",
+    "lint": "echo 'No lint for core'",
+    "format": "echo 'No format for core'"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

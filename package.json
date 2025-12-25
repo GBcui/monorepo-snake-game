@@ -1,0 +1,27 @@
+{
+  "name": "snake-game-monorepo",
+  "private": true,
+  "description": "高级贪吃蛇游戏 - React Monorepo 实现",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "preview": "turbo preview",
+    "type-check": "turbo type-check",
+    "lint": "turbo lint",
+    "clean": "turbo run clean --parallel || true",
+    "format": "turbo format"
+  },
+  "keywords": [
+    "react",
+    "monorepo",
+    "snake-game",
+    "pnpm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.0",
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "turbo": "^2.7.2"
+  }
+}
