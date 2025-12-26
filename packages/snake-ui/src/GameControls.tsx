@@ -38,32 +38,6 @@ export const GameControls: React.FC<GameControlsProps> = ({
   return (
     <div style={styles.container}>
       <div style={styles.section}>
-        <h3 style={styles.title}>游戏控制</h3>
-        <div style={styles.buttonGroup}>
-          {(isIdle || isGameOver) && (
-            <button onClick={onStart} style={styles.primaryButton}>
-              开始游戏
-            </button>
-          )}
-          {isRunning && (
-            <button onClick={onPause} style={styles.warningButton}>
-              暂停
-            </button>
-          )}
-          {isPaused && (
-            <button onClick={onResume} style={styles.successButton}>
-              继续
-            </button>
-          )}
-          {!isIdle && (
-            <button onClick={onReset} style={styles.dangerButton}>
-              重置
-            </button>
-          )}
-        </div>
-      </div>
-
-      <div style={styles.section}>
         <h3 style={styles.title}>难度设置</h3>
         <div style={styles.difficultyGrid}>
           {difficulties.map((diff) => (
@@ -115,11 +89,10 @@ export const GameControls: React.FC<GameControlsProps> = ({
       <div style={styles.section}>
         <h3 style={styles.title}>操作说明</h3>
         <div style={styles.instructions}>
-          <p>🎮 使用方向键控制蛇的移动</p>
-          <p>⏸️ 空格键可以暂停/继续游戏</p>
-          <p>🍎 吃掉红色苹果增加分数</p>
-          <p>⚡ 收集彩色道具获得特殊能力</p>
-          <p>💀 避免撞墙或撞到自己</p>
+          <p>⌨️ 方向键/WASD - 移动</p>
+          <p>⏸️ 空格键 - 暂停/继续</p>
+          <p>👆 滑动屏幕 - 控制方向</p>
+          <p>🖱️ 点击 - 暂停/继续</p>
         </div>
       </div>
     </div>
@@ -133,9 +106,10 @@ const styles: Record<string, React.CSSProperties> = {
     gap: '16px',
     padding: '16px',
     backgroundColor: '#1e293b',
-    borderRadius: '8px',
+    borderRadius: '12px',
     color: '#e2e8f0',
-    minWidth: '280px'
+    minWidth: '280px',
+    border: '1px solid #334155'
   },
   section: {
     display: 'flex',
@@ -144,60 +118,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
   title: {
     margin: 0,
-    fontSize: '14px',
+    fontSize: '13px',
     fontWeight: 'bold',
     color: '#94a3b8',
     textTransform: 'uppercase',
     letterSpacing: '0.5px'
-  },
-  buttonGroup: {
-    display: 'flex',
-    gap: '8px',
-    flexWrap: 'wrap'
-  },
-  primaryButton: {
-    padding: '10px 16px',
-    border: 'none',
-    borderRadius: '6px',
-    backgroundColor: '#3b82f6',
-    color: 'white',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    flex: 1,
-    transition: 'background-color 0.2s'
-  },
-  successButton: {
-    padding: '10px 16px',
-    border: 'none',
-    borderRadius: '6px',
-    backgroundColor: '#22c55e',
-    color: 'white',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    flex: 1,
-    transition: 'background-color 0.2s'
-  },
-  warningButton: {
-    padding: '10px 16px',
-    border: 'none',
-    borderRadius: '6px',
-    backgroundColor: '#f59e0b',
-    color: 'white',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    flex: 1,
-    transition: 'background-color 0.2s'
-  },
-  dangerButton: {
-    padding: '10px 16px',
-    border: 'none',
-    borderRadius: '6px',
-    backgroundColor: '#ef4444',
-    color: 'white',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    flex: 1,
-    transition: 'background-color 0.2s'
   },
   difficultyGrid: {
     display: 'grid',
@@ -212,7 +137,8 @@ const styles: Record<string, React.CSSProperties> = {
     color: '#e2e8f0',
     fontWeight: 'bold',
     cursor: 'pointer',
-    transition: 'all 0.2s'
+    transition: 'all 0.2s',
+    fontSize: '12px'
   },
   difficultyActive: {
     backgroundColor: '#334155',
@@ -229,14 +155,18 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center',
     gap: '8px',
     cursor: 'pointer',
-    fontSize: '13px'
+    fontSize: '13px',
+    padding: '6px 8px',
+    borderRadius: '6px',
+    backgroundColor: '#0f172a'
   },
   instructions: {
-    fontSize: '12px',
-    lineHeight: '1.6',
+    fontSize: '11px',
+    lineHeight: '1.8',
     color: '#94a3b8',
     backgroundColor: '#0f172a',
     padding: '12px',
-    borderRadius: '6px'
+    borderRadius: '6px',
+    fontFamily: 'monospace'
   }
 };

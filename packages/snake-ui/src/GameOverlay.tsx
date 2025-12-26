@@ -99,10 +99,8 @@ export const GameOverlay: React.FC<GameOverlayProps> = ({
               </button>
             </div>
             <div style={styles.tips}>
-              <p>🎮 操作方式:</p>
-              <p>• 滑动屏幕 / 方向键 / WASD 控制</p>
-              <p>• 点击 / 空格键 暂停</p>
-              <p>• 收集道具获得特殊能力</p>
+              <p>🎯 准备开始游戏</p>
+              <p>点击"开始游戏"按钮或按空格键</p>
             </div>
           </div>
         )
@@ -298,10 +296,11 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '12px',
     backgroundColor: '#0f172a',
     borderRadius: '8px',
-    fontSize: '12px',
-    lineHeight: '1.8',
+    fontSize: '13px',
+    lineHeight: '1.6',
     color: '#94a3b8',
-    textAlign: 'left'
+    textAlign: 'center',
+    fontWeight: '600'
   },
   settingsContent: {
     display: 'flex',

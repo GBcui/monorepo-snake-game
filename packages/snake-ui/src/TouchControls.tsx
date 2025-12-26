@@ -107,7 +107,10 @@ export const TouchControls: React.FC<TouchControlsProps> = ({
   return (
     <div
       ref={containerRef}
-      style={styles.container}
+      style={{
+        ...styles.container,
+        ...(disabled ? styles.disabled : styles.enabled)
+      }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -125,9 +128,9 @@ export const TouchControls: React.FC<TouchControlsProps> = ({
       onMouseUp={handleTouchEnd}
     >
       <div style={styles.hint}>
-        {disabled ? '游戏已结束' : '👆 滑动控制方向，点击暂停'}
+        {disabled ? '🎮 游戏已结束' : '👆 滑动控制方向，点击暂停'}
       </div>
-      {touchStart && touchEnd && (
+      {touchStart && touchEnd && !disabled && (
         <div style={styles.debug}>
           {Math.round(touchEnd.x - touchStart.x)}, {Math.round(touchEnd.y - touchStart.y)}
         </div>
@@ -138,39 +141,48 @@ export const TouchControls: React.FC<TouchControlsProps> = ({
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    position: 'relative',
     touchAction: 'none',
     userSelect: 'none',
     WebkitUserSelect: 'none',
-    zIndex: 10,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    borderRadius: '8px',
+    padding: '12px',
+    textAlign: 'center',
+    transition: 'all 0.2s ease',
+    border: '2px solid transparent'
+  },
+  enabled: {
+    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+    borderColor: '#3b82f6',
+    boxShadow: '0 2px 8px rgba(59, 130, 246, 0.2)'
+  },
+  disabled: {
+    backgroundColor: 'rgba(100, 116, 139, 0.1)',
+    borderColor: '#64748b',
+    opacity: 0.6,
+    cursor: 'not-allowed'
   },
   hint: {
-    position: 'absolute',
-    bottom: '20px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    background: 'rgba(0, 0, 0, 0.7)',
-    color: 'white',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#e2e8f0',
     padding: '8px 16px',
-    borderRadius: '20px',
-    fontSize: '12px',
-    pointerEvents: 'none',
-    whiteSpace: 'nowrap'
+    borderRadius: '6px',
+    backgroundColor: 'rgba(15, 23, 42, 0.6)',
+    display: 'inline-block',
+    pointerEvents: 'none'
   },
   debug: {
     position: 'absolute',
-    top: '10px',
-    right: '10px',
+    top: '8px',
+    right: '8px',
     background: 'rgba(0, 0, 0, 0.5)',
     color: 'white',
-    padding: '4px 8px',
+    padding: '2px 6px',
     borderRadius: '4px',
     fontSize: '10px',
-    fontFamily: 'monospace'
+    fontFamily: 'monospace',
+    pointerEvents: 'none'
   }
 };

@@ -187,13 +187,7 @@ function App() {
           <div style={styles.canvasContainer}>
             <GameCanvas
               gameState={gameState}
-              cellSize={24}
-            />
-            {/* 触控层 - 仅在游戏运行时显示提示 */}
-            <TouchControls
-              onDirectionChange={handleDirectionChange}
-              onTogglePause={handleTogglePause}
-              disabled={!isGameActive}
+              cellSize={30}
             />
             {/* 游戏覆盖层 */}
             <GameOverlay
@@ -213,6 +207,12 @@ function App() {
               onToggleVibration={handleToggleVibration}
             />
           </div>
+          {/* 滑动控制提示 - 移到游戏区域外部 */}
+          <TouchControls
+            onDirectionChange={handleDirectionChange}
+            onTogglePause={handleTogglePause}
+            disabled={!isGameActive}
+          />
         </div>
 
         <div style={styles.rightPanel}>
@@ -252,58 +252,74 @@ const styles: Record<string, React.CSSProperties> = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '16px',
     width: '100%',
-    minHeight: '100vh'
+    minHeight: '100vh',
+    padding: '16px',
+    boxSizing: 'border-box'
   },
   header: {
     textAlign: 'center',
-    padding: '20px',
-    background: 'rgba(15, 23, 42, 0.6)',
+    padding: '16px',
+    background: 'rgba(15, 23, 42, 0.8)',
     borderRadius: '12px',
-    backdropFilter: 'blur(10px)'
+    backdropFilter: 'blur(10px)',
+    border: '1px solid #334155'
   },
   title: {
-    fontSize: '32px',
+    fontSize: '28px',
     fontWeight: 'bold',
-    marginBottom: '8px',
+    marginBottom: '6px',
     background: 'linear-gradient(135deg, #4ade80 0%, #3b82f6 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text'
   },
   subtitle: {
-    fontSize: '14px',
-    color: '#94a3b8'
+    fontSize: '13px',
+    color: '#94a3b8',
+    margin: 0
   },
   main: {
     display: 'grid',
-    gridTemplateColumns: '1fr 350px',
+    gridTemplateColumns: '2fr 1fr',
     gap: '20px',
     alignItems: 'start',
-    flex: 1
+    flex: 1,
+    maxWidth: '1400px',
+    margin: '0 auto',
+    width: '100%'
   },
   leftPanel: {
     display: 'flex',
-    justifyContent: 'center',
-    position: 'relative'
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '12px',
+    position: 'relative',
+    padding: '16px',
+    backgroundColor: '#1e293b',
+    borderRadius: '12px',
+    border: '1px solid #334155'
   },
   canvasContainer: {
     position: 'relative',
-    display: 'inline-block'
+    display: 'inline-block',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.4)'
   },
   rightPanel: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px'
+    gap: '12px'
   },
   footer: {
     textAlign: 'center',
-    padding: '16px',
-    background: 'rgba(15, 23, 42, 0.6)',
+    padding: '12px',
+    background: 'rgba(15, 23, 42, 0.8)',
     borderRadius: '12px',
-    fontSize: '12px',
-    color: '#64748b'
+    fontSize: '11px',
+    color: '#64748b',
+    border: '1px solid #334155',
+    marginTop: '8px'
   },
   loading: {
     display: 'flex',

@@ -70,14 +70,6 @@ export const GameStats: React.FC<GameStatsProps> = ({
         </div>
       </div>
 
-      <div style={styles.section}>
-        <h3 style={styles.title}>游戏时间</h3>
-        <div style={styles.statRow}>
-          <span>已玩时间:</span>
-          <span style={styles.value}>{formatTime(stats.timeElapsed)}</span>
-        </div>
-      </div>
-
       {effects.length > 0 && (
         <div style={styles.section}>
           <h3 style={styles.title}>活跃效果</h3>
@@ -122,24 +114,25 @@ const styles: Record<string, React.CSSProperties> = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
+    gap: '12px',
     padding: '16px',
     backgroundColor: '#1e293b',
-    borderRadius: '8px',
+    borderRadius: '12px',
     color: '#e2e8f0',
-    minWidth: '250px'
+    minWidth: '280px',
+    border: '1px solid #334155'
   },
   section: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
-    padding: '8px',
+    gap: '6px',
+    padding: '10px',
     backgroundColor: '#0f172a',
-    borderRadius: '6px'
+    borderRadius: '8px'
   },
   title: {
     margin: 0,
-    fontSize: '14px',
+    fontSize: '13px',
     fontWeight: 'bold',
     color: '#94a3b8',
     textTransform: 'uppercase',
@@ -148,8 +141,8 @@ const styles: Record<string, React.CSSProperties> = {
   statRow: {
     display: 'flex',
     justifyContent: 'space-between',
-    fontSize: '13px',
-    padding: '4px 0',
+    fontSize: '12px',
+    padding: '3px 0',
     borderBottom: '1px solid #1e293b'
   },
   value: {
@@ -166,7 +159,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '4px',
     border: '2px solid',
     backgroundColor: '#1e293b',
-    fontSize: '11px',
+    fontSize: '10px',
     fontWeight: 'bold',
     textTransform: 'uppercase'
   }
